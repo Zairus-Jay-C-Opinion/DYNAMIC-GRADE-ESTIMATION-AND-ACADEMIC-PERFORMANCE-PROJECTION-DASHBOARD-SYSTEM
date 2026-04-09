@@ -16,3 +16,8 @@ grade_system.db
 # OS files
 .DS_Store
 Thumbs.db
+
+build/
+dist/
+*.exe
+*.db
