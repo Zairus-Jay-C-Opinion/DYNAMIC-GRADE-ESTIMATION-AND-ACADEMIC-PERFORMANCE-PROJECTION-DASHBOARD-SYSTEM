@@ -737,8 +737,8 @@ class GradeDashboard:
         Prompts for target grade, then shows required scores per component
         using equal distribution logic.
         """
-        from component import get_components, validate_weights
-        from grade_logic import project_required_scores
+        from component import validate_weights
+        from grade_logic import convert_to_numeric_grade, project_required_scores
 
         if not self.current_subject_id:
             messagebox.showwarning("Warning", "Select a subject first.",

@@ -31,7 +31,7 @@ A desktop application built with Python and Tkinter for tracking and projecting 
 
 ```
 ├── main.py          # Entry point
-├── gui.py           # All GUI screens (Login, Dashboard, Projection)
+├── dashboard_screen.py           # All GUI screens (Login, Dashboard, Projection)
 ├── database.py      # SQLite connection and table management
 ├── auth.py          # User registration and login
 ├── subject.py       # Subject CRUD operations
