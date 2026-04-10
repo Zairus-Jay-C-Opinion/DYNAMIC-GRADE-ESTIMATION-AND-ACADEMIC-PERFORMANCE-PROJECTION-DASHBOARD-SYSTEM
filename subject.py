@@ -26,17 +26,3 @@ def get_user_subjects(user_id):
     conn.close()
 
     return subjects
-
-def get_components(subject_id):
-    conn = connect_db()
-    cursor = conn.cursor()
-
-    cursor.execute(
-        "SELECT component_id, component_name, weight, total_items FROM components WHERE subject_id = ?",
-        (subject_id,)
-    )
-
-    components = cursor.fetchall()
-    conn.close()
-
-    return components
