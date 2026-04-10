@@ -1,41 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox, simpledialog
 
-# ── Grade conversion table ────────────────────────────────────
-# Format: (numeric_grade, min_percentage, max_percentage)
-GRADE_TABLE = [
-    (1.00, 98, 100),
-    (1.25, 94,  97),
-    (1.50, 90,  93),
-    (1.75, 88,  89),
-    (2.00, 85,  87),
-    (2.25, 83,  84),
-    (2.50, 80,  82),
-    (2.75, 78,  79),
-    (3.00, 75,  77),
-    (5.00,  0,  74),  # INC / Failed
-]
-
-def convert_to_numeric_grade(percentage):
-    # I-convert ang raw percentage sa numeric grade gamit ang table
-    for numeric, low, high in GRADE_TABLE:
-        if low <= percentage <= high:
-            return numeric
-    # Below 0 or edge cases
-    return 5.00
-
-def classify_numeric_grade(numeric_grade):
-    # Classify based sa numeric grade, hindi percentage
-    if 1.00 <= numeric_grade <= 1.50:
-        return "Outstanding"
-    elif 1.75 <= numeric_grade <= 2.50:
-        return "Safe"
-    elif 2.75 <= numeric_grade <= 3.00:
-        return "At Risk"
-    else:
-        return "Critical"
-
-
 # ── Color palette ──────────────────────────────────────────────
 C0 = "#F0F3FA"
 C1 = "#D5DEEF"
@@ -412,7 +377,7 @@ class GradeDashboard:
         self.weight_remaining_label.pack(fill=tk.X, padx=12)
 
         self.weight_comp_label = tk.Label(weight_summary_frame,
-                                           text="Component: 0%",
+                                           text="Component: 0",
                                            bg=C0, fg=TEXT_MUTED,
                                            font=(FONT_FAMILY, 9), anchor="w")
         self.weight_comp_label.pack(fill=tk.X, padx=12)
