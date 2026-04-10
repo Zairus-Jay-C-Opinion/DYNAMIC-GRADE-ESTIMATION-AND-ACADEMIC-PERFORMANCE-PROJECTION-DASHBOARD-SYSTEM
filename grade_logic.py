@@ -1,5 +1,5 @@
 from database import connect_db
-from subject import get_components
+from component import get_components
 
 GRADE_TABLE = [
     (1.00, 98, 100),
