@@ -7,6 +7,11 @@ def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
 def register_user(username, password):
+    if len(username.strip()) < 3:
+        return "Username is too short"
+    if len(password) < 6:
+        return "Password is too short"
+
     conn = connect_db()
     if not conn:
         return False
@@ -17,7 +22,7 @@ def register_user(username, password):
     try:
         cursor.execute(
             "INSERT INTO users (username, password_hash) VALUES (?, ?)",
-            (username, hashed_pw)
+            (username.strip(), hashed_pw)
         )
         conn.commit()
         conn.close()
@@ -41,7 +46,7 @@ def login_user(username, password):
 
     cursor.execute(
         "SELECT user_id FROM users WHERE username = ? AND password_hash = ?",
-        (username, hashed_pw)
+        (username.strip(), hashed_pw)
     )
 
     result = cursor.fetchone()
